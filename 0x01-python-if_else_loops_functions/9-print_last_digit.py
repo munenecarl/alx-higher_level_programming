@@ -1,4 +1,4 @@
-#!/bin/usr/bash
+#!/bin/usr/python3
 
 def print_last_digit(number):
 	last_digit = (number - (10 * int(number / 10)))
