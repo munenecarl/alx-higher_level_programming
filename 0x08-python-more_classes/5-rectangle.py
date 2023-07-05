@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module for Rectangle class with print and str methods."""
+"""Module for Rectangle class with del methods."""
 
 class Rectangle:
     """Rectangle class."""
@@ -61,4 +61,8 @@ class Rectangle:
     
     def __repr__(self):
         """Return string representation of rectangle"""
-        return "<3-rectangle.Rectangle object at {}>".format(id(self))
+        return "Rectangle({}, {})".format(self.width, self.height)
+
+    def __del__(self):
+        """Print message when rectangle is deleted"""
+        print("Bye rectangle...")

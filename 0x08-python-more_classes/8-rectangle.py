@@ -1,8 +1,12 @@
 #!/usr/bin/python3
-"""Module for Rectangle class with print and str methods."""
+"""Module for Rectangle class with bigger)or_equal method added."""
 
 class Rectangle:
     """Rectangle class."""
+
+    number_of_instances = 0
+    print_symbol = "#"
+
     def __init__(self, width=0, height=0):
         """Initialize rectangle class with 'width' and 'height'
         Args:
@@ -12,6 +16,7 @@ class Rectangle:
 
         self.width = width
         self.height = height
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
@@ -57,8 +62,33 @@ class Rectangle:
         """Print rectangle using #"""
         if self.width == 0 or self.height == 0:
             return ""
-        return "\n".join(["#" * self.width] * self.height)
+        return "\n".join([str(self.print_symbol) * self.width] * self.height)
     
     def __repr__(self):
         """Return string representation of rectangle"""
-        return "<3-rectangle.Rectangle object at {}>".format(id(self))
+        return "Rectangle({}, {})".format(self.width, self.height)
+
+    def __del__(self):
+        """Print message when rectangle is deleted"""
+        print("Bye rectangle...")
+        Rectangle.number_of_instances -= 1
+
+    def bigger_or_equal(rect_1, rect_2):
+        """Return biggest rectangle based on area.
+        Args:
+            rect_1 (Rectangle): first rectangle
+            rect_2 (Rectangle): second rectangle
+        Raises:
+            TypeError: if rect_1 or rect_2 is not a Rectangle
+        Returns:
+            Rectangle: biggest rectangle
+        """
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        
+        if rect_1.area() >= rect_2.area():
+            return rect_1
+        return rect_2

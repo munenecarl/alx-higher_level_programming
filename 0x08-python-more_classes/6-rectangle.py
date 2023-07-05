@@ -1,8 +1,11 @@
 #!/usr/bin/python3
-"""Module for Rectangle class with print and str methods."""
+"""Module for Rectangle class with del methods."""
 
 class Rectangle:
     """Rectangle class."""
+
+    number_of_instances = 0
+
     def __init__(self, width=0, height=0):
         """Initialize rectangle class with 'width' and 'height'
         Args:
@@ -12,6 +15,7 @@ class Rectangle:
 
         self.width = width
         self.height = height
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
@@ -61,4 +65,9 @@ class Rectangle:
     
     def __repr__(self):
         """Return string representation of rectangle"""
-        return "<3-rectangle.Rectangle object at {}>".format(id(self))
+        return "Rectangle({}, {})".format(self.width, self.height)
+
+    def __del__(self):
+        """Print message when rectangle is deleted"""
+        print("Bye rectangle...")
+        Rectangle.number_of_instances -= 1
