@@ -1,8 +1,6 @@
 #!/usr/bin/python3
+"""Module for Empty Rectangle class."""
 
 class Rectangle:
     """Rectangle class."""
-
-    def __init__(self):
-        """Initialize rectangle class."""
-        pass
+    pass
