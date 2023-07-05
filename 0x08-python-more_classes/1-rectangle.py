@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Module for Rectangle class with height and width setters."""
 
 class Rectangle:
     """Rectangle class."""
