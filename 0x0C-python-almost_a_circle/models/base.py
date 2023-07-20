@@ -83,4 +83,3 @@ class Base:
                     for obj in list_objs:
                         f.write("{},{},{},{}\n".format(obj.id, obj.size,
                                                        obj.x, obj.y))
-

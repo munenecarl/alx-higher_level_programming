@@ -7,7 +7,7 @@ from models.base import Base
 class Rectangle(Base):
     """Rectangle class"""
 
-    def __init__(self, id=None, width=None, height=None, x=0, y=0):
+    def __init__(self, id=None, width=0, height=0, x=0, y=0):
         """Initialize Rectangle instance"""
         super().__init__(id)
         self.__width = width
@@ -24,7 +24,12 @@ class Rectangle(Base):
     @width.setter
     def width(self, value):
         """Set width"""
-        self.__width = value
+        if value <= 0:
+            raise ValueError("width must be > 0")
+        elif type(value) is not int:
+            raise TypeError("width must be an integer")
+        else:
+            self.__width = value
 
     @property
     def height(self):
@@ -34,7 +39,12 @@ class Rectangle(Base):
     @height.setter
     def height(self, value):
         """Set height"""
-        self.__height = value
+        if value <= 0:
+            raise ValueError("height must be > 0")
+        elif type(value) is not int:
+            raise TypeError("height must be an integer")
+        else:
+            self.__height = value
 
     @property
     def x(self):
@@ -44,7 +54,10 @@ class Rectangle(Base):
     @x.setter
     def x(self, value):
         """Set x"""
-        self.__x = value
+        if value < 0:
+            raise ValueError("x must be >= 0")
+        else:
+            self.__x = value
 
     @property
     def y(self):
@@ -54,7 +67,10 @@ class Rectangle(Base):
     @y.setter
     def y(self, value):
         """Set y"""
-        self.__y = value
+        if value < 0:
+            raise ValueError("y must be >= 0")
+        else:
+            self.__y = value
 
     def area(self):
         """Get area"""
