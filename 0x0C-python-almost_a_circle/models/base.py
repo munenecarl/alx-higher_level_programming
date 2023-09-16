@@ -47,12 +47,19 @@ class Base:
         """Returns an instance with all attributes already set"""
         if cls.__name__ == "Rectangle":
             if 'width' in dictionary and 'height' in dictionary:
-                dummy = cls(dictionary['width'], dictionary['height'])
+                width = dictionary.get('width', 1)
+                height = dictionary.get('height', 1)
+                if width <= 0 or height <= 0:
+                    raise ValueError("width and height must be > 0")
+                dummy = cls(width, height)
             else:
                 dummy = cls(1, 1)
         elif cls.__name__ == "Square":
             if 'side' in dictionary:
-                dummy = cls(1)
+                side = dictionary.get('side', 1)
+                if side <= 0:
+                    raise ValueError("side must be > 0")
+                dummy = cls(side)
         else:
             dummy = cls()
         return dummy
