@@ -93,3 +93,26 @@ class Base:
                     for obj in list_objs:
                         f.write("{},{},{},{}\n".format(obj.id, obj.size,
                                                        obj.x, obj.y))
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserializes in CSV"""
+        file_name = cls.__name__ + '.csv'
+        try:
+            with open(file_name, 'r') as f:
+                if cls.__name__ == "Rectangle":
+                    reader = csv.reader(f)
+                    instances = []
+                    for row in reader:
+                        instances.append(cls(int(row[1]), int(row[2]),
+                                             int(row[3]), int(row[4]),
+                                             row[0]))
+                else:
+                    reader = csv.reader(f)
+                    instances = []
+                    for row in reader:
+                        instances.append(cls(int(row[1]), int(row[2]),
+                                             int(row[3]), row[0]))
+                return instances
+        except:
+            return []
