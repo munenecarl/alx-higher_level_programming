@@ -2,6 +2,8 @@
 
 import os
 import unittest
+import turtle
+from unittest.mock import patch, MagicMock
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
@@ -354,6 +356,46 @@ class TestBase_load_from_file(unittest.TestCase):
         with self.assertRaises(TypeError):
             Base.load_from_file([], 1)
 
+
+if __name__ == "__main__":
+    unittest.main()
+
+class TestBaseDraw(unittest.TestCase):
+    def setUp(self):
+        # Create an instance of Base for testing
+        self.base_instance = Base()
+
+        # Create a mock for the turtle module
+        self.mock_turtle = MagicMock()
+        patcher = patch('models.base.turtle', self.mock_turtle)
+        self.mock_turtle = patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def test_draw(self):
+        # Call the draw method
+        self.base_instance.draw([], [])
+
+        # Add assertions to check if the turtle commands are as expected
+        expected_commands = [
+            'title("HBNB")',
+            'bgcolor("#b3daff")',
+            'pensize(3)',
+            'shape("turtle")',
+            'color("#ff751a")',
+            'penup()',
+            'goto(-200, 200)',
+            'pendown()',
+            'forward(400)',
+            'right(90)',
+            'forward(400)',
+            'right(90)',
+            'forward(400)',
+            'color("#ff751a")',
+        ]
+
+        # Check if the turtle methods were called with the expected commands
+        for call, expected_command in zip(self.mock_turtle.mock_calls, expected_commands):
+            self.assertEqual(str(call), expected_command)
 
 if __name__ == "__main__":
     unittest.main()

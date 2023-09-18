@@ -5,6 +5,7 @@
 import json
 import os
 import csv
+import turtle
 
 class Base:
     """A base class for all hbnb models"""
@@ -116,3 +117,22 @@ class Base:
                 return instances
         except:
             return []
+
+    def draw(list_rectangles, list_squares):
+        """Draws rectangles and squares using turtle"""
+        turtle.title("HBNB")
+        turtle.bgcolor("#b3daff")
+        turtle.pensize(3)
+        turtle.shape("turtle")
+        turtle.color("#ff751a")
+        turtle.penup()
+        turtle.goto(-200, 200)
+        turtle.pendown()
+        turtle.forward()
+        turtle.right(90)
+        turtle.forward(400)
+        turtle.right(90)
+        turtle.forward(400)
+        turtle.right(90)
+        turtle.forward(400)
+        turtle.color("#ff751a")
