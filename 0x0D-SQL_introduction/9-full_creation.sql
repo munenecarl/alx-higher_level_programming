@@ -1,3 +1,4 @@
+-- script that creates the database hbtn_0c_0
 CREATE TABLE IF NOT EXISTS hbtn_0c_0.second_table (
 	id INT,
 	name VARCHAR(256),

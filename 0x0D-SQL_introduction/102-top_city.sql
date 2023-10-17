@@ -1,3 +1,4 @@
+-- Description: Compute the top 3 cities with highest temperature during July and August and order by temperature (descending)
 USE hbtn_0c_0;
 
 -- Import the table dump from temperatures.sql

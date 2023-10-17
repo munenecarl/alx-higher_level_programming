@@ -1,3 +1,4 @@
+-- Description: Compute the average temperature by city and order by temperature (descending)
 USE hbtn_0c_0;
 
 -- Import the table dump from temperatures.sql

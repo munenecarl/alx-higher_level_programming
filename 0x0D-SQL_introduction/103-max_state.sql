@@ -1,3 +1,4 @@
+-- Script that displays max temp
 USE hbtn_0c_0;
 
 -- Import the table dump from temperatures.sql
