@@ -1,0 +1,1 @@
+This project enhances knowledge on the use of joins and unions in SQL.
